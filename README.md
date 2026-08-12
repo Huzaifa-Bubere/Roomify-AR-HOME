@@ -1,3 +1,5 @@
+
+
 # 🏠 Roomify AR Home
 
 **Smart Furniture Shopping & 3D Interior Visualization Platform**
@@ -719,7 +721,13 @@ Roomify AR Home is a React-based furniture visualization platform combining 3D r
 
 Watch the complete demonstration of Roomify AR Home:
 
-[![Roomify AR Home - Project Demo](docs/screenshots/video-thumbnail.png)](YOUR_VIDEO_LINK)
+[![Roomify AR Home - Project Demo]
+
+
+https://github.com/user-attachments/assets/a9b6dc5b-6ec2-4b8c-bae8-ff72417600f6
+
+
+
 
 **Duration:** 5:28
 
