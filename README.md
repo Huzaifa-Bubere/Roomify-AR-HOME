@@ -714,3 +714,24 @@ Roomify AR Home is a React-based furniture visualization platform combining 3D r
 **Core Technologies:** React · React Router · Three.js / React Three Fiber · Firebase Firestore · Styled Components · jsPDF · 3D Models · AR Integration
 
 > *"Visualize your furniture. Design your space. Shop with confidence."*
+
+## 🎥 Project Demo
+
+Watch the complete demonstration of Roomify AR Home:
+
+[![Roomify AR Home - Project Demo](docs/screenshots/video-thumbnail.png)](YOUR_VIDEO_LINK)
+
+**Duration:** 5:28
+
+The demo covers:
+
+- 🏠 Home page and 3D furniture visualization
+- 🪑 Furniture categories
+- 🛋️ Product browsing
+- 🔍 Product details
+- 🧊 Interactive 3D model
+- 📱 AR Try-On
+- 🛒 Add to cart
+- 🎟️ Discount application
+- 🧾 Invoice generation
+- 🔐 Login / Signup
