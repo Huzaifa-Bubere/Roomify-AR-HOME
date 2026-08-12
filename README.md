@@ -682,8 +682,7 @@ Contributions are welcome!
 
 ## 📄 License
 
-This project is currently intended as an academic/demo project. If you plan to distribute it publicly, add an appropriate open-source license (e.g. **MIT**) along with a corresponding `LICENSE` file.
-
+This project is currently intended as an academic/demo project. 
 ---
 
 ## 👨‍💻 Author
