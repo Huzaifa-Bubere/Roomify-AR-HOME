@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./CategoriesProduct.css";
 import { CartContext } from "../App";
+import { formatINR } from "../utils/currency";
 
 const productsData = {
   sofas: [
@@ -60,7 +61,7 @@ const CategoriesProduct = () => {
               <img src={product.image} alt={product.name} className="product-image" />
               <div className="product-info">
                 <h3>{product.name}</h3>
-                <p className="price">${product.price.toFixed(2)}</p>
+                <p className="price">{formatINR(product.price)}</p>
                 <button className="buy-btn" onClick={() => handleAddToCart(product)}>
                   Add to Cart
                 </button>
