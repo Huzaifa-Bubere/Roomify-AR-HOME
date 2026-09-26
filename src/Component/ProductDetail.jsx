@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import "./ProductDetail.css";
+import { formatINR } from "../utils/currency";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -29,7 +30,7 @@ function ProductDetails() {
       <div className="product-info">
         <h1>{product.name}</h1>
         <p className="product-category">Category: {product.category}</p>
-        <p className="product-price">₹ {product.price}</p>
+        <p className="product-price">{formatINR(product.price)}</p>
 
         {/* Furniture Specifications */}
         <div className="product-specs">
@@ -49,7 +50,7 @@ function ProductDetails() {
             className="ar-tryon-btn"
             onClick={() => (window.location.href = "https://venny-hong.github.io/3D_Model/")}
           >
-            🕶️ AR Try-On
+            🏠 View in Your Room
           </button>
           <button className="add-to-cart-btn">🛒 Book This Product</button>
         </div>
