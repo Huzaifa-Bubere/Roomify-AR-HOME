@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../App";
 import "./FeaturedProduct.css";
+import { formatINR } from "../utils/currency";
 
 // ✅ Numeric prices only
 const productData = [
