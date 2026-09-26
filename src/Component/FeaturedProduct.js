@@ -6,16 +6,16 @@ import { formatINR } from "../utils/currency";
 
 // ✅ Numeric prices only
 const productData = [
-  { id: 1, name: "Modern Sofa", category: "sofas", price: 899, image: "/images/sofa.jpg" },
-  { id: 2, name: "Luxury Bed", category: "beds", price: 1299, image: "/images/luxury-bed.jpg" },
-  { id: 3, name: "Dining Table", category: "tables", price: 699, image: "/images/dining-table.jpg" },
-  { id: 4, name: "Chair", category: "chairs", price: 399, image: "/images/chair.jpg" },
-  { id: 5, name: "Classic Sofa", category: "sofas", price: 499, image: "/images/Sofa2.jpg" }, // Increased price
-  { id: 6, name: "Stylish Lamp", category: "lamp", price: 349, image: "/images/lamp.jpg" },   // Increased price
-  { id: 7, name: "Wooden Bed", category: "beds", price: 599, image: "/images/Bed.jpg" },     // Increased price
-  { id: 8, name: "Round Dining Table", category: "tables", price: 449, image: "/images/dining-table2.jpg" }, // Increased
-  { id: 9, name: "Luxury Chair", category: "chairs", price: 399, image: "/images/Chair2.jpg" }, // Increased
-  { id: 10, name: "Decor Lamp", category: "lamp", price: 299, image: "/images/Lamp2.jpg" },  // Increased
+  { id: 1, name: "Modern Sofa", category: "sofas", price: 34999, image: "/images/sofa.jpg" },
+  { id: 2, name: "Luxury Bed", category: "beds", price: 54999, image: "/images/luxury-bed.jpg" },
+  { id: 3, name: "Dining Table", category: "tables", price: 29999, image: "/images/dining-table.jpg" },
+  { id: 4, name: "Chair", category: "chairs", price: 8999, image: "/images/chair.jpg" },
+  { id: 5, name: "Classic Sofa", category: "sofas", price: 24999, image: "/images/Sofa2.jpg" },
+  { id: 6, name: "Stylish Lamp", category: "lamp", price: 3499, image: "/images/lamp.jpg" },
+  { id: 7, name: "Wooden Bed", category: "beds", price: 39999, image: "/images/Bed.jpg" },
+  { id: 8, name: "Round Dining Table", category: "tables", price: 19999, image: "/images/dining-table2.jpg" },
+  { id: 9, name: "Luxury Chair", category: "chairs", price: 12999, image: "/images/Chair2.jpg" },
+  { id: 10, name: "Decor Lamp", category: "lamp", price: 2999, image: "/images/Lamp2.jpg" },
 ];
 
 function FeaturedProducts() {
