@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { jsPDF } from "jspdf";
 import { CartContext } from "../App"; // ✅ Import Cart Context
+import { formatINR, formatINRForPdf } from "../utils/currency";
 
 // 🎨 Styled Components
 const CartContainer = styled.div`
@@ -295,8 +296,8 @@ const ThankYouMessage = styled.div`
     padding: 40px 20px;
   }
 `;
-const SHIPPING = 35;
-const TAX = 45;
+const SHIPPING = 499;
+const TAX = 899;
 
 const CartPage = () => {
   const { cart } = useContext(CartContext);
@@ -383,7 +384,7 @@ const downloadInvoice = () => {
   products.forEach((p, i) => {
     doc.text(`${i + 1}. ${p.name}`, 14, y);
     doc.text(`x${p.quantity}`, 120, y);
-    doc.text(`$${(p.price * p.quantity).toFixed(2)}`, 190, y, { align: "right" });
+    doc.text(formatINRForPdf(p.price * p.quantity), 190, y, { align: "right" });
     y += 8;
   });
 
@@ -397,27 +398,27 @@ const downloadInvoice = () => {
   doc.setFont("helvetica", "bold");
   doc.text("Subtotal:", 140, y);
   doc.setFont("helvetica", "normal");
-  doc.text(`$${subtotal.toFixed(2)}`, 190, y, { align: "right" });
+  doc.text(formatINRForPdf(subtotal), 190, y, { align: "right" });
   y += 8;
 
   if (discount > 0) {
     doc.setFont("helvetica", "bold");
     doc.text("Discount (20%):", 140, y);
     doc.setFont("helvetica", "normal");
-    doc.text(`-$${(subtotal * 0.2).toFixed(2)}`, 190, y, { align: "right" });
+    doc.text(`- ${formatINRForPdf(subtotal * 0.2)}`, 190, y, { align: "right" });
     y += 8;
   }
 
   doc.setFont("helvetica", "bold");
   doc.text("Shipping:", 140, y);
   doc.setFont("helvetica", "normal");
-  doc.text(`$${SHIPPING.toFixed(2)}`, 190, y, { align: "right" });
+  doc.text(formatINRForPdf(SHIPPING), 190, y, { align: "right" });
   y += 8;
 
   doc.setFont("helvetica", "bold");
   doc.text("Tax:", 140, y);
   doc.setFont("helvetica", "normal");
-  doc.text(`$${TAX.toFixed(2)}`, 190, y, { align: "right" });
+  doc.text(formatINRForPdf(TAX), 190, y, { align: "right" });
   y += 10;
 
   // === TOTAL AMOUNT BOX ===
@@ -427,7 +428,7 @@ const downloadInvoice = () => {
   doc.setFontSize(14);
   doc.setTextColor(0, 0, 0);
   doc.text("Total:", 140, y + 7);
-  doc.text(`$${estimatedTotal.toFixed(2)}`, 190, y + 7, { align: "right" });
+  doc.text(formatINRForPdf(estimatedTotal), 190, y + 7, { align: "right" });
 
   // === FOOTER ===
   y += 30;
@@ -465,8 +466,8 @@ const downloadInvoice = () => {
                 </QuantityControl>
                 <RemoveButton onClick={() => handleRemove(idx)}>Remove</RemoveButton>
               </ProductDetails>
-              <Price>${p.price.toFixed(2)}</Price>
-              <Total>${(p.price * p.quantity).toFixed(2)}</Total>
+              <Price>{formatINR(p.price)}</Price>
+              <Total>{formatINR(p.price * p.quantity)}</Total>
             </Product>
           ))
         ) : (
@@ -486,22 +487,38 @@ const downloadInvoice = () => {
         <ApplyButton onClick={handleApplyPromo}>APPLY</ApplyButton>
 
         <SummaryList>
-          <SummaryItem><span>SUBTOTAL</span><span>${subtotal.toFixed(2)}</span></SummaryItem>
-          {discount > 0 && (
-            <SummaryItem><span>Discount (20%)</span><span>- ${(subtotal * 0.2).toFixed(2)}</span></SummaryItem>
-          )}
-          <SummaryItem><span>Shipping</span><span>${SHIPPING.toFixed(2)}</span></SummaryItem>
-          <SummaryItem><span>Sales Tax</span><span>${TAX.toFixed(2)}</span></SummaryItem>
-          <EstTotal>
-            <span>ESTIMATED TOTAL</span>
-            <span>${estimatedTotal.toFixed(2)}</span>
-          </EstTotal>
+          <SummaryItem>
+  <span>SUBTOTAL</span>
+  <span>{formatINR(subtotal)}</span>
+</SummaryItem>
+
+{discount > 0 && (
+  <SummaryItem>
+    <span>Discount (20%)</span>
+    <span>- {formatINR(subtotal * 0.2)}</span>
+  </SummaryItem>
+)}
+
+<SummaryItem>
+  <span>Shipping</span>
+  <span>{formatINR(SHIPPING)}</span>
+</SummaryItem>
+
+<SummaryItem>
+  <span>GST</span>
+  <span>{formatINR(TAX)}</span>
+</SummaryItem>
+
+<EstTotal>
+  <span>ESTIMATED TOTAL</span>
+  <span>{formatINR(estimatedTotal)}</span>
+</EstTotal>
         </SummaryList>
 
         <CheckoutButton disabled={products.length === 0} onClick={handleCheckout}>
           CHECKOUT
         </CheckoutButton>
-        <HelpText>Need help? Call us at 1-877-707-6272</HelpText>
+        <HelpText>Need help? support@roomify.com</HelpText>
       </SummarySection>
 
       {/* ✅ Promo Popup */}
@@ -519,7 +536,7 @@ const downloadInvoice = () => {
           <ThankYouMessage>
             <div>🧾 Order Confirmed!</div>
             <div style={{ fontSize: "1.2rem", marginTop: "15px" }}>
-              Your total: ${estimatedTotal.toFixed(2)}
+              Your total: {formatINR(estimatedTotal)}
             </div>
 
             <div style={{ marginTop: "28px", display: "flex", justifyContent: "center", gap: "10px" }}>
