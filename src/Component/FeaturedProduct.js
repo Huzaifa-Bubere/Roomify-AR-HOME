@@ -58,7 +58,7 @@ function FeaturedProducts() {
               <h3>{product.name}</h3>
 
               {/* ✅ Numeric value displayed directly */}
-              <p className="price">{product.price}</p>
+              <p className="price">{formatINR(product.price)}</p>
 
               <button
                 onClick={() => addToCart({ ...product, quantity: 1 })}
